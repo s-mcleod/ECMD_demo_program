@@ -5,7 +5,7 @@ A demonstration program of our proposed exact contrast maximisation for event-ba
 
 A subset of the event batches generated from the Surf2D-7 full resolution dataset are provided.  ECMD sequentially estimates divergence over each event batch, and writes the output results to the "Results.csv" file.  
 
-11 event batches (20.csv to 30.csv) are located in,
+2 event batches (29.csv to 30.csv) are located in,
 
   data/surf2D-7/event_batches/csvs
 
