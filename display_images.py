@@ -54,10 +54,6 @@ def main():
                 start_file = i
                 end_file = i + (end_file_number-start_file_number)
                 break
-    #
-    # padding = 120
-    # width = 1280
-    # height = 720
 
     for i in range(start_file, end_file):
         # Save warped image

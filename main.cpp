@@ -58,15 +58,12 @@ int main(int argc, char ** argv){
   double arbitrary_camera_height = 10;
   Camera_Parameters cp = Camera_Parameters(arbitrary_focal_length, arbitrary_camera_height);
 
-  ofstream calculated_divergence_file;
   ofstream results_file;
 
   // Calculate divergence for each csv file.
 
   // Get divergence files ready to write to.
   string data_file_name = extract_last_directory_name(move_backwards_a_directory(move_backwards_a_directory(move_backwards_a_directory(path_to_event_data))));
-
-  calculated_divergence_file.open ("TTC_calculated_divergence.csv");
 
   //  Each line of the results file will represent the results from one iteration of the divergence file.
   //  The lines will have the following format:
@@ -78,15 +75,15 @@ int main(int argc, char ** argv){
   // 5 - number of processed events
   // 6 - duration
 
-  results_file.open ("Results_for_"+data_file_name+".csv");
+  results_file.open ("Results.csv");
   vector<string> results_vector;
   results_vector.push_back("Ground truth divergence");
   results_vector.push_back("Estimated divergence");
   results_vector.push_back("Divergence error (%)");
   results_vector.push_back("Estimated velocity");
   results_vector.push_back("Maximised contrast");
-  results_vector.push_back("Number of events in the sequence");
-  results_vector.push_back("ECMD Duration");
+  results_vector.push_back("Number of events in the event batch");
+  results_vector.push_back("ECMD duration (s)");
   for (int i = 0; i < results_vector.size(); i++){
     if (i < results_vector.size()-1)
       results_file<<results_vector[i]<<", ";
@@ -146,7 +143,6 @@ int main(int argc, char ** argv){
 
     // Calculate divergence.
     double div = -1*(optimal_velocity/(arbitrary_camera_height+optimal_velocity*(event_data->end_time - event_data->start_time)))*1000000;
-    calculated_divergence_file<<div<<'\n';
     results_vector[1] = to_string(div);
 
     // Qualitative Results.
@@ -198,7 +194,6 @@ int main(int argc, char ** argv){
     }
 
   }
-  calculated_divergence_file.close();
   results_file.close();
 
   delete event_data;
