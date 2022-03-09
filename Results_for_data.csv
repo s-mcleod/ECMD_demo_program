@@ -1,0 +1,3 @@
+Ground truth divergence, Estimated divergence, Divergence error (%), Estimated velocity, Maximised contrast, Number of events in the sequence, ECMD Duration
+0.005834, 0.039845, -582.924860, -3.9067e-07, 0.010344, 15253, 9.216606
+0.014413, 0.039846, -176.450910, -3.90678e-07, 0.010929, 16126, 9.578956
